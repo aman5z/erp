@@ -71,7 +71,7 @@ Because this is a vanilla frontend application, deployment is incredibly simple.
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/erp-console.git](https://github.com/yourusername/erp-console.git)
+   git clone [https://github.com/aman5z/erp-console.git](https://github.com/aman5z/erp-console.git)
    ```
 2. **Serve the files:**
    Place the files (`dashboard.html`, `sw.js`, `manifest.json`) in any static web server directory (Nginx, Apache, or even a basic VS Code Live Server). 
