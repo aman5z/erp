@@ -91,3 +91,10 @@ Don't have the backends set up yet? You can explore the UI by clicking **"🎮 E
 ## 🔒 Security Note
 
 This frontend relies on its connected backend services for true authorization. The built-in Role-Based Access Control (RBAC) hides UI elements based on the user's role, but your backend APIs (Flask/GAS) must validate session tokens independently for all sensitive read/write operations.
+
+
+
+<img width="1919" height="868" alt="Screenshot 2026-03-26 224502" src="https://github.com/user-attachments/assets/06b9f97f-e4b6-424f-9723-44fbeb9f35b8" />
+<img width="1917" height="870" alt="Screenshot 2026-03-26 224444" src="https://github.com/user-attachments/assets/2cf96f77-d44d-49b8-b436-f5771df9ec70" />
+<img width="1919" height="876" alt="Screenshot 2026-03-26 224419" src="https://github.com/user-attachments/assets/1badf3c7-753e-4fdd-91a5-4cfb99e131c8" />
+
