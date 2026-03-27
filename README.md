@@ -46,13 +46,11 @@ A comprehensive suite of client-side utilities built right into the app:
 * **PDF Tools:** Merge, split, compress, and watermark PDFs entirely in the browser using `pdf-lib`.
 * **Networking:** IP/DNS Lookup, Subnet Calculator, MAC Vendor lookup, and live Ping Monitor charts.
 * **Data Formatting:** Base64 encoding/decoding, Hex/Dec/Bin converters, and a Text Diff checker.
-* 
-<img width="1671" height="785" alt="Screenshot 2026-03-26 215032" src="https://github.com/user-attachments/assets/2e95a033-1456-4a70-ba1b-cba16c7ebd58" />
 
-### 🎨 UI / UX
-* **Extensive Theming:** Choose from 10 distinct color palettes (Dark, Light, Dracula, Nord, Synthwave, Oceanic, Sunset, etc.).
-* **Layout Modes:** Toggle between standard sidebar, horizontal top-bar, or a compact data-dense view.
-* **Typography & Styling:** Multiple font choices (Inter, Outfit, IBM Plex Mono) and an optional premium glassmorphism UI toggle.
+  <img width="1919" height="868" alt="Screenshot 2026-03-26 224502" src="https://github.com/user-attachments/assets/06b9f97f-e4b6-424f-9723-44fbeb9f35b8" />
+<img width="1917" height="870" alt="Screenshot 2026-03-26 224444" src="https://github.com/user-attachments/assets/2cf96f77-d44d-49b8-b436-f5771df9ec70" />
+<img width="1919" height="876" alt="Screenshot 2026-03-26 224419" src="https://github.com/user-attachments/assets/1badf3c7-753e-4fdd-91a5-4cfb99e131c8" />
+
 
 ## 🛠️ Tech Stack
 
@@ -65,6 +63,9 @@ A comprehensive suite of client-side utilities built right into the app:
   * `SheetJS / xlsx` (Excel parsing and exporting)
   * `Chart.js` logic (Custom HTML5 Canvas charting for ping monitor)
 
+<img width="1671" height="785" alt="Screenshot 2026-03-26 215032" src="https://github.com/user-attachments/assets/2e95a033-1456-4a70-ba1b-cba16c7ebd58" />
+
+
 ## 🎮 Demo Mode
 
 Don't have the backends set up yet? You can explore the UI by clicking **"🎮 Enter Demo Mode"** on the login screen. This populates the app with mock employees, tickets, devices, and attendance data.
@@ -75,7 +76,4 @@ This frontend relies on its connected backend services for true authorization. T
 
 
 
-<img width="1919" height="868" alt="Screenshot 2026-03-26 224502" src="https://github.com/user-attachments/assets/06b9f97f-e4b6-424f-9723-44fbeb9f35b8" />
-<img width="1917" height="870" alt="Screenshot 2026-03-26 224444" src="https://github.com/user-attachments/assets/2cf96f77-d44d-49b8-b436-f5771df9ec70" />
-<img width="1919" height="876" alt="Screenshot 2026-03-26 224419" src="https://github.com/user-attachments/assets/1badf3c7-753e-4fdd-91a5-4cfb99e131c8" />
 
