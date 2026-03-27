@@ -1679,7 +1679,6 @@ input:checked+.slider:before{transform:translateX(16px);background:#000}
                 <label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox" id="sGlass" onchange="valGlass(this.checked)"> Enable Premium Glassmorphism UI</label>
               </div>
             </div>
-          </div>
           <div>
             <div class="settings-section">
               <h3>📡 ZKTeco Server (Local Network)</h3>
@@ -2901,8 +2900,8 @@ async function doLogin(){
             theme:d.theme||'dark',source:'zk'
           });
           spin(false);
-          // Try GAS login in background so tickets/counters/drive work
-          tryGASLogin(username, password||username);
+          // Auto-connect to GAS
+          await tryGASLogin(username, password||username);
           return;
         }
       }
@@ -3072,7 +3071,7 @@ function showPage(page){
   if(page==='punch'){loadPunchStatus();if(STATE.isAdmin){loadApprovals();loadDeviceQueue()}}
   if(page==='admin'){loadDBStats();loadUnmapped();loadShifts();loadWorkdays();loadHolidays();loadRoles();loadSessions()}
   if(page==='history'){const now=new Date();el('histTo').valueAsDate=now;const f=new Date(now);f.setDate(f.getDate()-7);el('histFrom').valueAsDate=f;}
-  if(page==='attlogs'){const now=new Date();if(el('logsTo'))el('logsTo').valueAsDate=now;if(el('logsFrom'))el('logsFrom').valueAsDate=now;loadAttLogs();}
+  if(page==='attlogs'){const now=new Date();if(el('logsTo'))el('logsTo').valueAsDate=now;const f=new Date(now);f.setDate(f.getDate()-1);if(el('logsFrom'))el('logsFrom').valueAsDate=f;loadAttLogs();}
   if(page==='terminal'){const url=_termUrl();if(url)loadTerminalFrame();else showTermSetup();}
   if(page==='sql'){/* ready */}
   if(page==='settings'){applyBranding();setTheme(CFG.theme);loadEmailSettings()}
@@ -3121,6 +3120,37 @@ function startCachePoll(){
 // ===========================================================================
 //  DASHBOARD
 // ===========================================================================
+async function loadAttLogs(){
+  const f=el('logsFrom')?el('logsFrom').value:'';
+  const t=el('logsTo')?el('logsTo').value:'';
+  const b=el('logsBadge')?el('logsBadge').value:'';
+  if(!f || !t) return toast('⚠ Select start and end dates');
+  el('logsBody').innerHTML='<tr><td colspan="5" style="text-align:center"><div class="spinner-border" style="width:20px;height:20px;border-width:2px;border-color:var(--accent) transparent var(--accent) transparent;border-radius:50%;animation:spin 1s linear infinite;"></div> Loading...</td></tr>';
+  try{
+    const r=await fetch(CFG.zkUrl+'/api/logs?from='+f+'&to='+t+'&badge='+encodeURIComponent(b), {credentials:'include'});
+    if(r.ok){
+      const d=await r.json();
+      if(!d || !d.length){
+        el('logsBody').innerHTML='<tr><td colspan="5" class="empty-state" style="padding:20px;text-align:center">No punch logs found</td></tr>';
+        if(el('logsCount'))el('logsCount').textContent='0 records';
+        return;
+      }
+      if(el('logsCount'))el('logsCount').textContent=d.length+' records';
+      el('logsBody').innerHTML=d.map(r=>`<tr>
+        <td class="td-mono">${r.timestamp||r.punch_time||''}</td>
+        <td class="td-mono">${esc(r.badge||'')}</td>
+        <td>${esc(r.name||'')}</td>
+        <td>${esc(r.dept||'')}</td>
+        <td class="td-mono text-muted">${esc(r.device_ip||'')}</td>
+      </tr>`).join('');
+    }else{
+      el('logsBody').innerHTML='<tr><td colspan="5" class="text-red">Error loading logs</td></tr>';
+    }
+  }catch(e){
+    el('logsBody').innerHTML='<tr><td colspan="5" class="text-red">Error: '+esc(e.message)+'</td></tr>';
+  }
+}
+
 async function loadDashboard(){
   el('dashDate').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
   setCacheDot('loading');
@@ -4755,7 +4785,11 @@ function loadTerminalFrame(){
   lset('termWsUrl',url);
   if(el('termUrlInput'))el('termUrlInput').value=url;
   el('termConnLabel').textContent=url;
-  el('termIframe').src=url;
+  let finalUrl = url;
+  if (location.protocol === 'https:' && url.startsWith('http:')) {
+    finalUrl = url.replace('http:', 'https:').replace(':7682', ':7683'); // Use secure WS port if defined
+  }
+  el('termIframe').src=finalUrl;
   el('termSetupScreen').style.display='none';
   el('termIframeWrap').style.display='flex';
 }
@@ -4772,7 +4806,11 @@ function connectTerminalNow(){
   lset('termWsUrl',url);
   if(el('termConnStatus'))el('termConnStatus').textContent='';
   el('termConnLabel').textContent=url;
-  el('termIframe').src=url;
+  let finalUrl = url;
+  if (location.protocol === 'https:' && url.startsWith('http:')) {
+    finalUrl = url.replace('http:', 'https:').replace(':7682', ':7683');
+  }
+  el('termIframe').src=finalUrl;
   el('termSetupScreen').style.display='none';
   el('termIframeWrap').style.display='flex';
 }
@@ -5216,7 +5254,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         const r = await fetch(CFG.zkUrl + '/api/auth/me', {credentials: 'include'});
         if (r.ok) {
             const d = await r.json();
-            if (d.ok) {
+            if (d.authenticated || d.ok) {
                 await onLoginSuccess({
                     username: d.username, name: d.name || d.username, role: d.role || 'employee',
                     badge: d.badge || d.username, permissions: d.permissions || {},
