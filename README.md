@@ -65,25 +65,6 @@ A comprehensive suite of client-side utilities built right into the app:
   * `SheetJS / xlsx` (Excel parsing and exporting)
   * `Chart.js` logic (Custom HTML5 Canvas charting for ping monitor)
 
-## 📦 Installation & Setup
-
-Because this is a vanilla frontend application, deployment is incredibly simple.
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/aman5z/erp-console.git](https://github.com/aman5z/erp-console.git)
-   ```
-2. **Serve the files:**
-   Place the files (`dashboard.html`, `sw.js`, `manifest.json`) in any static web server directory (Nginx, Apache, or even a basic VS Code Live Server). 
-   *Note: For the Service Worker (PWA functionality) to operate, the app must be served over HTTPS or `localhost`.*
-3. **Configure Backends (In-App):**
-   * Open the app in your browser.
-   * Click **⚙ Settings** on the login screen or via the user dropdown.
-   * Enter your **ZKTeco Server URL** (e.g., `http://192.168.1.100:5000`).
-   * Enter your **Google Apps Script Web App URL**.
-   * (Optional) Enter your `ttyd` WebSocket URL for the Terminal tab.
-   * Save settings. 
-
 ## 🎮 Demo Mode
 
 Don't have the backends set up yet? You can explore the UI by clicking **"🎮 Enter Demo Mode"** on the login screen. This populates the app with mock employees, tickets, devices, and attendance data.
