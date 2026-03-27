@@ -1,0 +1,82 @@
+{
+  "admin": {
+    "password_hash": "pbkdf2:ae77bdac23be5c420bf4160cb699013a:965d61ce485583693d9f39724a04c3830872047ba73e80ae5f99b88b33152153",
+    "role": "admin",
+    "name": "Administrator",
+    "badge": "1",
+    "permissions": {
+      "view_overview": true,
+      "view_today": true,
+      "view_history": true,
+      "view_employees": true,
+      "view_devices": true,
+      "view_own_calendar": true,
+      "view_all_calendars": true,
+      "export_reports": true,
+      "force_refresh": true
+    },
+    "theme": "dark",
+    "must_change_password": false,
+    "last_login": "2026-03-27T21:53:16.557924",
+    "avatar_id": 3
+  },
+  "1673": {
+    "password_hash": "pbkdf2:a6f8c7a23d00ee3ba6b6ed1f248e3fcc:70e76dcbedd1bfccccc6281dd8e66717055cee9cdbec09a15cceba889935ee2d",
+    "role": "employee",
+    "name": "AMAN P FAIZAL",
+    "badge": "1673",
+    "permissions": {
+      "view_overview": true,
+      "view_today": true,
+      "view_history": true,
+      "view_employees": true,
+      "view_devices": true,
+      "view_own_calendar": true,
+      "view_all_calendars": true,
+      "export_reports": true,
+      "force_refresh": true
+    },
+    "theme": "dark",
+    "must_change_password": false,
+    "last_login": "2026-03-26T15:57:38.823731"
+  },
+  "1019": {
+    "password_hash": "pbkdf2:e7d71f1775ad9c712468499e7ea94736:98691b2bdb273a91cf22f81b1d3bd966bf270290a081b1aa3e5d697741f75e60",
+    "role": "employee",
+    "name": "MUNEER KAITHA PARAMBATH",
+    "badge": "1019",
+    "permissions": {
+      "view_overview": true,
+      "view_today": true,
+      "view_history": true,
+      "view_employees": true,
+      "view_devices": true,
+      "view_own_calendar": true,
+      "view_all_calendars": true,
+      "export_reports": true,
+      "force_refresh": true
+    },
+    "theme": "dark",
+    "must_change_password": false
+  },
+  "1024": {
+    "password_hash": "pbkdf2:e00221cc42108bbb714e0019ec19f83d:ac6040992ac8997d6b661ba4ecce57885b1e7e22a430ae3026aed616bffddb17",
+    "role": "employee",
+    "name": "SHOWKATH ALI",
+    "badge": "1024",
+    "permissions": {
+      "view_overview": false,
+      "view_today": false,
+      "view_history": false,
+      "view_employees": false,
+      "view_devices": false,
+      "view_own_calendar": false,
+      "view_all_calendars": false,
+      "export_reports": false,
+      "force_refresh": false
+    },
+    "theme": "dark",
+    "must_change_password": false,
+    "last_login": "2026-03-26T11:33:29.463807"
+  }
+}
